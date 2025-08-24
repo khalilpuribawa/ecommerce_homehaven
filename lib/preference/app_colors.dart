@@ -7,6 +7,7 @@ class AppColors {
   // Warna dasar
   static const Color primary = Color(0xFF156651);
   static const Color primaryVariant = Color(0xFF115543);
+  static const Color border = Color(0xFF4CAF50);
   static const Color discount = Color(0xffE44A4A);
   static const Color background = Color(0xFFFFFFFF);
   static const Color error = Color(0xFFB00020);

@@ -15,18 +15,20 @@ class OnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50),
-          child: Expanded(
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.cover,
-              width: double.infinity,
+          SizedBox(
+            height: 500,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 0.1),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                ),
             ),
           ),
-        ), // Pastikan path gambar valid
+        // Pastikan path gambar valid
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+          padding: const EdgeInsets.only(right: 30, left: 20, top: 40, bottom: 10),
           child: Text(
             title,
             textAlign: TextAlign.center,
@@ -37,7 +39,19 @@ class OnboardingPage extends StatelessWidget {
             ),
           ),
         ),
-        Text(description),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 28),
+          child: Text(
+            description,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'Manrope',
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: Color(0xFF7C7C7C),
+            ),
+            ),
+        ),
       ],
     );
   }
