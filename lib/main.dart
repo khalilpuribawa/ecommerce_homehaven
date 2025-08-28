@@ -1,4 +1,7 @@
+import 'package:ecommerce_homehaven/features/home/screen/homepage_screen.dart';
 import 'package:ecommerce_homehaven/features/home/screen/login_screen.dart';
+import 'package:ecommerce_homehaven/features/home/screen/main_screen/main_screen.dart';
+import 'package:ecommerce_homehaven/features/home/screen/product_detail.dart';
 import 'package:ecommerce_homehaven/features/home/screen/profile_info_screen.dart';
 import 'package:ecommerce_homehaven/features/splash/splashscreen.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +28,10 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         '/login': (context) => const LoginScreen(),
+        '/homescreen': (context) => const HomepageScreen(),
+        '/mainscreen': (context) => const MainScreen(),
         '/profile': (context) => const ProfileInfoScreen(),
+        '/product-detail': (context) => const ProductDetailScreen(),
       },
     );
   }

@@ -25,15 +25,9 @@ class LoginScreenState extends State<LoginScreen> {
       await Future.delayed(const Duration(seconds: 2));
       if (!mounted) return; // Pastikan widget masih aktif.
 
-      // Navigasi ke profile info dengZan data user
-      Navigator.pushReplacementNamed(
-        context,
-        '/profile',
-        arguments: User(
-          name: _usernameController.text, // Data akan diambil dari API sebenarnya
-          email: _emailController.text,
-        ),
-      );
+      Navigator.pushReplacementNamed(context, '/mainscreen');
+
+      
     }
   }
 
