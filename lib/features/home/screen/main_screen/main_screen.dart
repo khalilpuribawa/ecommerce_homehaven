@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:ecommerce_homehaven/features/home/screen/cart_screen.dart';
 import 'package:ecommerce_homehaven/features/home/screen/homepage_screen.dart';
 import 'package:ecommerce_homehaven/features/home/screen/login_screen.dart';
 import 'package:ecommerce_homehaven/features/home/screen/profile_info_screen.dart';
@@ -14,7 +15,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Widget> screen = [
     HomepageScreen(),
-    LoginScreen(),
+    CartScreen(),
     ProfileInfoScreen(),
   ];
 

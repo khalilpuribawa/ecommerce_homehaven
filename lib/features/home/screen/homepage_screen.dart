@@ -51,7 +51,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
     },
     {
       'title': 'STRANDMON',
-      'imageUrl': 'assets/images/chair2.jpg',
+      'imageUrl': 'assets/images/image 9.png',
       'price': '\$274.13',
       'oldPrice': '\$856.60',
       'discount': '45% OFF',
@@ -60,14 +60,14 @@ class _HomepageScreenState extends State<HomepageScreen> {
       'description': 'An armchair with a deep seat and high back, providing a feeling of luxury and comfort.',
       'descriptiondetail':'Choose a stylish dark color or brighten up your home with colorful sarongs. The EKERÖ armchair has a sleek and modern look with two sides that meet at the back – and a waist support for added comfort!',
       'galleryImages': [
-        'assets/images/chair2_gallery_1.jpg',
-        'assets/images/chair2_gallery_2.jpg',
-        'assets/images/chair2_gallery_3.jpg',
+        'assets/images/image 9.png',
+        'assets/images/image 9.png',
+        'assets/images/image 9.png',
       ],
     },
     {
       'title': 'PLATTLÄNS',
-      'imageUrl': 'assets/images/lamp.jpg',
+      'imageUrl': 'assets/images/Product Image.png',
       'price': '\$24.99',
       'oldPrice': '\$69.99',
       'discount': '45% OFF',
@@ -76,14 +76,14 @@ class _HomepageScreenState extends State<HomepageScreen> {
       'description': 'A modern pendant lamp with a minimalist design, perfect for dining rooms or living rooms.',
       'descriptiondetail':'Choose a stylish dark color or brighten up your home with colorful sarongs. The EKERÖ armchair has a sleek and modern look with two sides that meet at the back – and a waist support for added comfort!',
       'galleryImages': [
-        'assets/images/lamp_gallery_1.jpg',
-        'assets/images/lamp_gallery_2.jpg',
-        'assets/images/lamp_gallery_3.jpg',
+        'assets/images/Product Image.png',
+        'assets/images/Product Image.png',
+        'assets/images/Product Image.png',
       ],
     },
     {
       'title': 'MALM',
-      'imageUrl': 'assets/images/drawer.jpg',
+      'imageUrl': 'assets/images/Product Image-1.png',
       'price': '\$50.99',
       'oldPrice': '\$69.99',
       'discount': '45% OFF',
@@ -92,9 +92,9 @@ class _HomepageScreenState extends State<HomepageScreen> {
       'description': 'A chest of 4 drawers with a simple and minimalist design, ideal for bedroom storage.',
       'descriptiondetail':'Choose a stylish dark color or brighten up your home with colorful sarongs. The EKERÖ armchair has a sleek and modern look with two sides that meet at the back – and a waist support for added comfort!',
       'galleryImages': [
-        'assets/images/drawer_gallery_1.jpg',
-        'assets/images/drawer_gallery_2.jpg',
-        'assets/images/drawer_gallery_3.jpg',
+        'assets/images/Product Image-1.png',
+        'assets/images/Product Image-1.png',
+        'assets/images/Product Image-1.png',
       ],
     },
   ];
@@ -235,7 +235,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                     ),
                     const SizedBox(height: 16),
                     SizedBox(
-                      height: 240, // Ubah tinggi dari 320 menjadi 350
+                      height: 240, 
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: products.length,

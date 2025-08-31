@@ -18,18 +18,28 @@ class LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
 
   Future<void> _login() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() => _isLoading = true);
+  if (_formKey.currentState!.validate()) {
+    setState(() => _isLoading = true);
 
-      // Simulasi proses login
-      await Future.delayed(const Duration(seconds: 2));
-      if (!mounted) return; // Pastikan widget masih aktif.
+    // Simulasi proses login
+    await Future.delayed(const Duration(seconds: 2));
+    if (!mounted) return; // Pastikan widget masih aktif.
 
-      Navigator.pushReplacementNamed(context, '/mainscreen');
+    // Dapatkan data dari controller
+    final String username = _usernameController.text;
+    final String email = _emailController.text;
 
-      
-    }
+    // Buat objek User
+    final User loggedInUser = User(name: username, email: email);
+
+    // Navigasi ke MainScreen dan kirim objek User sebagai argumen
+    Navigator.pushReplacementNamed(
+      context, 
+      '/mainscreen', 
+      arguments: loggedInUser
+    );
   }
+}
 
   @override
   void dispose() {

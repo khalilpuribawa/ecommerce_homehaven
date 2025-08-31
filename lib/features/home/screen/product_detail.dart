@@ -9,11 +9,15 @@ class ProductDetailScreen extends StatefulWidget {
   State<ProductDetailScreen> createState() => _ProductDetailScreenState();
 }
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
+class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerProviderStateMixin {
   final PageController _pageController = PageController();
   int _currentPageIndex = 0;
   String _selectedColor = "Harvest Gold"; // Status warna yang dipilih
   bool _isLiked = false;
+
+  // Deklarasi variabel animasi untuk pop-up
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
 
   // Daftar warna dummy untuk pengujian
   final List<Map<String, dynamic>> colors = [
@@ -31,14 +35,109 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         _currentPageIndex = _pageController.page!.round();
       });
     });
-  }
 
-  
+    // Inisialisasi AnimationController
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.elasticOut,
+    ));
+  }
 
   @override
   void dispose() {
     _pageController.dispose();
+    _animationController.dispose(); // Jangan lupa dispose controller animasi
     super.dispose();
+  }
+
+  // Fungsi untuk menampilkan pop-up sukses
+  void _showSuccessPopup() {
+    _animationController.reset(); // Pastikan animasi dimulai dari awal
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      barrierColor: Colors.black.withOpacity(0.5),
+      builder: (BuildContext context) {
+        _animationController.forward();
+        
+        // Menutup pop-up secara otomatis setelah 1.5 detik
+        Future.delayed(const Duration(milliseconds: 1500), () {
+          if (Navigator.of(context).canPop()) {
+            Navigator.of(context).pop();
+          }
+        });
+        
+        return AnimatedBuilder(
+          animation: _scaleAnimation,
+          builder: (context, child) {
+            return Transform.scale(
+              scale: _scaleAnimation.value,
+              child: AlertDialog(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                content: Container(
+                  width: 200,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 20,
+                        spreadRadius: 5,
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: const BoxDecoration(
+                          color: Colors.green,
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.check,
+                          color: Colors.white,
+                          size: 50,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Success!',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
+                        'Added to cart',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -312,7 +411,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     
                     flex: 4,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: _showSuccessPopup, // Hubungkan fungsi pop-up di sini
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF156651),
                         padding: const EdgeInsets.symmetric(vertical: 16),

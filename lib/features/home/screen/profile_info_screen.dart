@@ -173,14 +173,35 @@ class ProfileInfoScreen extends StatelessWidget {
                       onTap: () {},
                     ),
                   ],
+                  
                 ),
               ),
             ),
+             Padding(
+               padding: const EdgeInsets.symmetric(horizontal: 20),
+               child: ElevatedButton(
+                  onPressed: () {
+                    // Logika untuk logout
+                    Navigator.pushReplacementNamed(context, '/login');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    minimumSize: const Size(double.infinity, 50),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
+                  ),
+                  child: const Text(
+                    "Logout",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+             ),
           ],
         ),
       ),
+      
     );
   }
+  
 
   // Widget pembantu untuk membuat item menu
   Widget _buildMenuItem({
@@ -222,5 +243,7 @@ class ProfileInfoScreen extends StatelessWidget {
         ),
       ),
     );
+    
   }
+  
 }
